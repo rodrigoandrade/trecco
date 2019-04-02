@@ -1,0 +1,9 @@
+#logging:
+#  level:
+#    trecco: DEBUG
+#spring:
+#  data:
+#    mongodb:
+#      database: trecco
+#      host: localhost
+#      port: 27017
