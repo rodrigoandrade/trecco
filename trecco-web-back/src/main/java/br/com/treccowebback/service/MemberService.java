@@ -19,11 +19,19 @@ public class MemberService {
 	@Autowired
 	private MemberRepositoryImpl memberRepositoryImpl;
 	
-	public List<Member> findByName(String name) {
+	public List<Member> findByName(String name) throws Exception {
 		return memberRepositoryImpl.findByName(name);
 	}
 
-	public Member save(Member member) {
+	public Member save(Member member) throws Exception {
 		return memberRepositoryImpl.save(member);
+	}
+	
+	public void delete(Member member) throws Exception {
+		memberRepositoryImpl.delete(member);
+	}
+	
+	public void updateActive(String name, boolean active) throws Exception {
+		memberRepositoryImpl.updateActive(name, active);
 	}
 }

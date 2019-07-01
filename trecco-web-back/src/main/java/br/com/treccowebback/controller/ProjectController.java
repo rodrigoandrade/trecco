@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value="trecco")
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/projects")
 public class ProjectController {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -45,6 +46,19 @@ public class ProjectController {
 	public void save(@RequestBody Project project) {
 		service.save(project);
 		log.info("Record Project:.." + project);
+	}
+	
+	@ApiOperation(value = "Update field active", response = Void.class)
+	@PutMapping
+	public void updateProject(@RequestParam(value = "name", required = true) String name,
+			@RequestParam(value = "active", required = true) boolean active) {
+
+		try {
+			service.updateActive(name, active);
+			log.info(String.format("Update field 'active' with: '%b' of project: %s ... ", active, name));
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
 	}
 	
 }

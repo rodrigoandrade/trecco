@@ -4,6 +4,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
@@ -15,8 +17,10 @@ import lombok.ToString;
  *
  */
 
+@Builder
 @ToString
 @EqualsAndHashCode 
+@AllArgsConstructor
 public class Member {
 	
 	@Id
@@ -33,13 +37,4 @@ public class Member {
 	@Setter 
 	@NonNull
 	private Boolean active;
-	
-	public Member() {}
-
-	public Member(@NonNull String name, @NonNull Boolean active) {
-		super();
-		this.name = name;
-		this.active = active;
-	}
-	
 }

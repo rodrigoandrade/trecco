@@ -12,6 +12,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.treccowebback.adapter.LocalDateTimeDeserializer;
 import br.com.treccowebback.adapter.LocalDateTimeSerializer;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
@@ -23,8 +25,10 @@ import lombok.ToString;
  *
  */
 
+@Builder
 @ToString
 @EqualsAndHashCode 
+@AllArgsConstructor
 public class Project {
 	
 	@Id
@@ -51,12 +55,4 @@ public class Project {
 	@Getter 
 	@Setter
 	private List<Member> members;
-
-	public Project(@NonNull String name, @NonNull Boolean active, LocalDate initialDate) {
-		super();
-		this.name = name;
-		this.active = active;
-		this.initialDate = initialDate;
-	}
-	
 }
